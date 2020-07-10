@@ -49,7 +49,7 @@
           <q-item-label>Dashboard</q-item-label>
         </q-item-section>
       </q-item>
-      <q-item clickable active-class="active" v-ripple exact :to="{ name: 'dataBaju' }">
+      <q-item clickable active-class="active" v-ripple exact :to="{ name: 'jenispakaian' }">
         <q-item-section avatar>
           <q-icon name="dashboard"/>
         </q-item-section>
@@ -57,12 +57,12 @@
           <q-item-label>Data Baju</q-item-label>
         </q-item-section>
       </q-item>
-      <q-item clickable active-class="active" :to="{ name: 'inputBarang' }" v-ripple exact>
+      <q-item clickable active-class="active" :to="{ name: 'inputlaundry' }" v-ripple exact>
         <q-item-section avatar>
           <q-icon name="input"/>
         </q-item-section>
         <q-item-section>
-          <q-item-label>Input Baju</q-item-label>
+          <q-item-label>Input laundry</q-item-label>
         </q-item-section>
       </q-item>
       <q-item clickable active-class="active" :to="{ name: 'dataUser' }" v-ripple exact>
@@ -78,7 +78,7 @@
        </q-scroll-area>
     </q-drawer>
 
-    <q-page-container class="bg-deep-orange=11">
+    <q-page-container class="bg-deep-indigo-5">
       <router-view />
     </q-page-container>
   </q-layout>

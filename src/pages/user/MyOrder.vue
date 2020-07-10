@@ -24,8 +24,8 @@
     >
         <template v-slot:body="props">
           <q-tr :props="props">
-            <q-td key="namaBaju" :props="props">
-              {{ props.row.dataBaju[0].namaBaju }}
+            <q-td key="jenispakaian" :props="props">
+              {{ props.row.jenispakaian[0].jenispakaian }}
             </q-td>
             <q-td key="harga" :props="props">
               {{ props.row.harga }}
@@ -37,18 +37,18 @@
               {{ props.row.total }}
             </q-td>
             <q-td key="status" :props="props">
-              <q-badge v-if="props.row.status === 1" color="orange" class="q-pa-sm">
+              <q-badge v-if="props.row.status === 1" weight="1kg" class="q-pa-sm">
                 Belum di Konfirmasi
               </q-badge>
-              <q-badge v-if="props.row.status === 2" color="blue" class="q-pa-sm">
-                Sedang Dalam Pengiriman
+              <q-badge v-if="props.row.status === 2" weight="2kg" class="q-pa-sm">
+                Sedang Dalam Proses
               </q-badge>
-              <q-badge v-if="props.row.status === 3" color="green" class="q-pa-sm">
-                Sudah Di Terima Pembeli
+              <q-badge v-if="props.row.status === 3" weight="3kg" class="q-pa-sm">
+                Sudah Selesai
               </q-badge>
             </q-td>
             <q-td key="aksi" :props="props">
-              <q-btn :disable="props.row.status !== 2" label="Terima" @click="confirm(props.row._id)" class="q-ml-sm" color="green" unelevated/>
+              <q-btn :disable="props.row.status !== 2" label="Terima" @click="confirm(props.row._id)" class="q-ml-sm" weight="3kg" unelevated/>
             </q-td>
           </q-tr>
         </template>
@@ -63,7 +63,7 @@ export default {
   data () {
     return {
       columns: [
-        { name: 'namaBaju', align: 'center', label: 'Nama Baju', field: 'namaBaju', sortable: true },
+        { name: 'jenispakaian', align: 'center', label: 'Jenis Pakaian', field: 'jenispakaian', sortable: true },
         { name: 'harga', align: 'center', label: 'Harga', field: 'harga', sortable: true },
         { name: 'jumlah', align: 'center', label: 'Jumlah Beli', field: 'jumlah', sortable: true },
         { name: 'total', align: 'center', label: 'Total ', field: 'total', sortable: true },

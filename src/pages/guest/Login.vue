@@ -1,22 +1,22 @@
 <template>
-    <q-layout class="bg-deep-orange-10" view="lHh Lpr Lff">
+    <q-layout class="bg-deep-indigo-5" view="lHh Lpr Lff">
       <q-page-container>
         <q-page padding class="row items-center justify-center">
             <div class="full-width row">
               <div class="col-md-6 offset-md-3 col-xs-12 q-pa-md">
-                  <q-card flat class="text-deep-orange-13">
+                  <q-card flat class="text-deep-indigo-6">
                       <div class="row">
                           <div class="col-md-5">
                             <div class="row">
                                 <div class="col-md-10 offset-1">
-                                    <q-img src="../../statics/logo.png"></q-img>
+                                    <q-img src="../../statics/laundry.jpg"></q-img>
                                 </div>
                             </div>
                           </div>
                           <div class="col md-5">
                             <q-card-section>
-                              <div class="text-h5">FiqYol</div>
-                              <div>your brand clothing</div>
+                              <div class="text-h5">Dhojo</div>
+                              <div>your laundry</div>
                             </q-card-section>
                               <q-form @submit="login">
                                 <q-card-section>
@@ -37,7 +37,7 @@
                                     />
                                 </q-card-section>
                                 <q-card-section>
-                                    <q-btn label="Login" type="submit" unelevated color="deep-orange" class="full-width" />
+                                    <q-btn label="Login" type="submit" unelevated color="indigo-5" class="full-width" />
                                     <q-btn :to="{ name: 'registerPage' }" label="Register" class="full-width q-mb-md q-mt-md"/>
                                 </q-card-section>
                              </q-form>

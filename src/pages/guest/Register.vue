@@ -1,7 +1,7 @@
 <template>
     <q-layout>
         <q-page-container>
-            <q-page padding class="bg-deep-orange-10">
+            <q-page padding class="bg-indigo-5">
                 <div class="row">
                     <q-card class="fixed-center col-md-4 col-xs-12">
                         <q-card-section>
@@ -41,7 +41,7 @@
                                 />
                                 <q-card-section>
                                     <div class="q-gutter-md">
-                                        <q-btn label="Registrasi" unelevated type="submit" color="deep-orange" class="full-width"/>
+                                        <q-btn label="Registrasi" unelevated type="submit" color="indigo" class="full-width"/>
                                         <q-btn :to="{ name: 'loginPage' }" label="Login" type="submit" class="full-width q-mb-md q-mt-md"/>
                                     </div>
                                 </q-card-section>

@@ -7,7 +7,7 @@
             <div class="left"></div>
           </div>
           <div class="col">
-            <q-banner inline-actions class="text-deep-orange-10">
+            <q-banner inline-actions class="text-indigo-5">
               <div class="text-h6">Data User</div>
               <div >Data Pelanggan</div>
             </q-banner>

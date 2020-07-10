@@ -7,7 +7,7 @@
             <div class="left blue"></div>
           </div>
           <div class="col">
-            <q-banner inline-actions class="text-deep-orange-10">
+            <q-banner inline-actions class="text-indigo-5">
               <div class="text-h6">Input Clothing</div>
               <div >Input Data Clothing</div>
             </q-banner>
@@ -25,8 +25,8 @@
             <q-input
                 filled
                 v-model="form.namaBaju"
-                label="Nama Baju"
-                :rules="[ val => val && val.length > 0 || 'Masukkan Nama Baju']"
+                label="Jenis Pakaian"
+                :rules="[ val => val && val.length > 0 || 'Masukkan Jenis Pakaian']"
             />
 
              <q-input
@@ -39,18 +39,18 @@
 
             <q-input
               filled
-              v-model="form.warna"
-              :options="optionWarna"
-              label="Pilih Warna Baju"
-              :rules="[ val => val && val.length > 0 || 'Pilihlah Warna Baju']"
+              v-model="form.berat"
+              :options="optionberat"
+              label="Berat Pakaian"
+              :rules="[ val => val && val.length > 0 || 'Pilih Berat Pakaian']"
             />
 
             <q-select
               filled
-              v-model="form.ukuran"
-              :options="optionUkuran"
-              label="Pilih Ukuran"
-              :rules="[ val => val && val.length > 0 || 'Pilihlah Ukuran']"
+              v-model="form.pilihan laundry"
+              :options="optionpilihanlaundry"
+              label="Pilihan Laundry"
+              :rules="[ val => val && val.length > 0 || 'Pilihlah Laundry']"
             />
 
             <div class="flex">
@@ -60,7 +60,7 @@
               v-model="form.rating"
               size="2em"
               :max="5"
-              color="deep-orange-10"
+              color="indigo-5"
             />
             </div>
 
@@ -80,7 +80,7 @@
 
             <div>
                 <q-btn label="Submit" type="submit" color="deep-orange-10"/>
-                <q-btn label="Reset" type="reset" color="deep-orange-14" flat class="q-ml-sm" />
+                <q-btn label="Reset" type="reset" color="indigo-6" flat class="q-ml-sm" />
             </div>
 
         </q-form>
@@ -94,28 +94,21 @@ export default {
   data () {
     return {
       form: {
-        namaBaju: null,
+        jenispakain: null,
         harga: 0,
-        warna: null,
-        ukuran: null,
+        berat: null,
+        pilihanlaundry: null,
         rating: 0,
         deskripsi: null
       },
-      optionWarna: [
-        'merah',
-        'biru',
-        'hijau',
-        'coklat',
-        'kuning',
-        'putih'
+      optioberat: [
+        '1kg',
+        '2kg',
+        '3kg'
       ],
-      optionUkuran: [
-        'xs',
-        's',
-        'm',
-        'l',
-        'xl',
-        'xxl'
+      optionpilihalaundry: [
+        'Cuci',
+        'Setrika'
       ],
       image: null
     }

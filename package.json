@@ -1,9 +1,9 @@
 {
-  "name": "tokobaju",
+  "name": "laundry",
   "version": "0.0.1",
-  "description": "bajuuas",
+  "description": "uaslaundry",
   "productName": "Quasar App",
-  "author": "yollandhafiqa",
+  "author": "dhonajosua",
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",

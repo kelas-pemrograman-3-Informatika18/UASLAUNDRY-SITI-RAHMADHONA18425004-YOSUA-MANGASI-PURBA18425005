@@ -7,9 +7,9 @@
             <div class="left"></div>
           </div>
           <div class="col">
-            <q-banner inline-actions class="text-deep-orange-10">
+            <q-banner inline-actions class="text-indigo-5">
               <div class="text-h6">Data Transaksi</div>
-              <div >Data Transaksi Pembelian Dan Pemesanan</div>
+              <div >Data Transaksi Pemberian Dan Penerimaan</div>
             </q-banner>
           </div>
         </div>
@@ -24,8 +24,8 @@
     >
         <template v-slot:body="props">
           <q-tr :props="props">
-            <q-td key="namaBaju" :props="props">
-              {{ props.row.dataMovie[0].namaBaju }}
+            <q-td key="jenispakaian" :props="props">
+              {{ props.row.dataMovie[0].jenispakaian }}
             </q-td>
             <q-td key="harga" :props="props">
               {{ props.row.harga }}
@@ -40,19 +40,19 @@
               {{ props.row.dataUser[0].namaLengkap }}
             </q-td>
             <q-td key="status" :props="props">
-              <q-badge v-if="props.row.status === 1" color="orange" class="q-pa-sm">
+              <q-badge v-if="props.row.status === 1" weight="1kg" class="q-pa-sm">
                 Belum di Konfirmasi
               </q-badge>
-              <q-badge v-if="props.row.status === 2" color="blue" class="q-pa-sm">
-                Sedang Dalam Pengiriman
+              <q-badge v-if="props.row.status === 2" weight="2kg" class="q-pa-sm">
+                Sedang Dalam Proses
               </q-badge>
-              <q-badge v-if="props.row.status === 3" color="green" class="q-pa-sm">
-                Sudah Di Terima Pembeli
+              <q-badge v-if="props.row.status === 3" weight="3kg" class="q-pa-sm">
+                Sudah Di Terima
               </q-badge>
             </q-td>
             <q-td key="aksi" :props="props">
               <q-btn label="Detail" @click="openDetail(props.row)" color="primary" unelevated/>
-              <q-btn :disable="props.row.status !== 1" label="Konfirmasi" @click="confirm(props.row._id)" class="q-ml-sm" color="green" unelevated/>
+              <q-btn :disable="props.row.status !== 1" label="Konfirmasi" @click="confirm(props.row._id)" class="q-ml-sm" weight="3kg" unelevated/>
             </q-td>
           </q-tr>
         </template>
@@ -125,7 +125,7 @@
           </div>
         </q-card-section>
 
-        <q-card-actions align="right" class="bg-white text-deep-orange-10">
+        <q-card-actions align="right" class="bg-white text-indigo-5">
           <q-btn flat label="OK" v-close-popup />
         </q-card-actions>
       </q-card>
@@ -139,11 +139,11 @@ export default {
   data () {
     return {
       columns: [
-        { name: 'namaBaju', align: 'center', label: 'Nama Baju', field: 'namaBaju', sortable: true },
+        { name: 'jenispakaian', align: 'center', label: 'Jenis Pakaian', field: 'jenispakaian', sortable: true },
         { name: 'harga', align: 'center', label: 'Harga', field: 'harga', sortable: true },
-        { name: 'jumlah', align: 'center', label: 'Jumlah Beli', field: 'jumlah', sortable: true },
+        { name: 'berat', align: 'center', label: 'Berat', field: 'berat', sortable: true },
         { name: 'total', align: 'center', label: 'Total ', field: 'total', sortable: true },
-        { name: 'nama', align: 'center', label: 'Nama Pembeli', field: 'nama', sortable: true },
+        { name: 'nama', align: 'center', label: 'Nama', field: 'nama', sortable: true },
         { name: 'status', align: 'center', label: 'Status', field: 'status', sortable: true },
         { name: 'aksi', align: 'center', label: 'Aksi', field: 'aksi' }
       ],
@@ -171,11 +171,11 @@ export default {
     confirm (id) {
       this.$q.dialog({
         title: 'Konfirmasi',
-        message: 'Konfirmasi Order?',
+        message: 'Konfirmasi?',
         cancel: true,
         persistent: true
       }).onOk(() => {
-        this.$axios.put(`order/konfirmasiorder/${id}`)
+        this.$axios.put(`order/konfirmasi/${id}`)
           .then((res) => {
             if (res.data.sukses) {
               this.$showNotif(res.data.pesan, 'positive')

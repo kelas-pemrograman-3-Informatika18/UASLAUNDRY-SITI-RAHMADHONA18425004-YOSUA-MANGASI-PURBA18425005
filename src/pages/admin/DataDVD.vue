@@ -7,7 +7,7 @@
             <div class="left"></div>
           </div>
           <div class="col">
-            <q-banner inline-actions class="text-deep-orange-14">
+            <q-banner inline-actions class="text-indigo-5">
               <div class="text-h6">Data Clothing</div>
               <div >Data Katalog</div>
             </q-banner>
@@ -24,17 +24,17 @@
     >
         <template v-slot:body="props">
           <q-tr :props="props">
-            <q-td key="namaBaju" :props="props">
-              {{ props.row.namaBaju }}
+            <q-td key="jenispakaian" :props="props">
+              {{ props.row.jenispakaian }}
             </q-td>
             <q-td key="harga" :props="props">
               {{ props.row.harga }}
             </q-td>
-            <q-td key="warna" :props="props">
-              {{ props.row.warna }}
+            <q-td key="berat" :props="props">
+              {{ props.row.berat }}
             </q-td>
-            <q-td key="ukuran" :props="props">
-              {{ props.row.ukuran }}
+            <q-td key="pilihanlaundry" :props="props">
+              {{ props.row.pilihanlaundry }}
             </q-td>
             <q-td key="deskripsi" :props="props">
               <div class="ellipsis" style="max-width: 100px;">
@@ -44,13 +44,13 @@
             <q-td key="image" :props="props">
               <q-img
                 :src="`${$baseImageURL}/${props.row.image}`"
-                spinner-color="white"
+                spinner-weight="3kg"
                 />
             </q-td>
              <q-td key="aksi" :props="props">
                 <div class="row q-gutter-md">
-                    <q-btn :to="{ name: 'formEdit', params: { id: props.row._id }}" label="Edit" icon="edit" color="warning"/>
-                    <q-btn @click="deleteMovie(props.row._id)" label="Hapus" icon="delete" color="red"/>
+                    <q-btn :to="{ name: 'formEdit', params: { id: props.row._id }}" label="Edit" icon="edit" weightr="warning"/>
+                    <q-btn @click="deleteMovie(props.row._id)" label="Hapus" icon="delete" weight="red"/>
                 </div>
             </q-td>
 
@@ -67,10 +67,10 @@ export default {
   data () {
     return {
       columns: [
-        { name: 'namaBaju', align: 'left', label: 'Nama Baju', field: 'namaBaju', sortable: true },
+        { name: 'jenispakain', align: 'left', label: 'Jenis Pakaian', field: 'jenispakaian', sortable: true },
         { name: 'harga', align: 'left', label: 'Harga', field: 'harga', sortable: true },
-        { name: 'warna', align: 'left', label: 'Warna Baju', field: 'warna', sortable: true },
-        { name: 'ukuran', align: 'left', label: 'Ukuran Baju', field: 'ukuran', sortable: true },
+        { name: 'berat', align: 'left', label: 'Berat Pakaian', field: 'berat', sortable: true },
+        { name: 'pilihanlaundry', align: 'left', label: 'Pilihan Cuci atau Setrika', field: 'pilihanlaundry', sortable: true },
         { name: 'deskripsi', align: 'left', label: 'Deskripsi', field: 'deskripsi', sortable: true },
         { name: 'image', align: 'left', label: 'Gambar', field: 'image' },
         { name: 'aksi', align: 'left', label: 'Aksi', field: 'aksi' }
@@ -83,7 +83,7 @@ export default {
   },
   methods: {
     getData () {
-      this.$axios.get('baju/getall')
+      this.$axios.get('laundry/getall')
         .then((res) => {
           if (res.data.sukses) {
             this.data = res.data.data
@@ -99,7 +99,7 @@ export default {
         cancel: true,
         persistent: true
       }).onOk(() => {
-        this.$axios.delete(`baju/delete/${id}`)
+        this.$axios.delete(`laundry/delete/${id}`)
           .then(res => {
             if (res.data.sukses) {
               this.$showNotif(res.data.pesan, 'positive')

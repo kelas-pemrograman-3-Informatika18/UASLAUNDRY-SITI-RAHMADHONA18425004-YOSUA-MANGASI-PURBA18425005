@@ -7,7 +7,7 @@
             <div class="left"></div>
           </div>
           <div class="col">
-            <q-banner inline-actions class="text-deep-orange-10">
+            <q-banner inline-actions class="text-indigo-5">
               <div class="text-h6">Edit</div>
               <div >Input Data Clothing</div>
             </q-banner>
@@ -24,10 +24,10 @@
             >
             <q-input
                 filled
-                v-model="form.namaBaju"
-                label="Nama Baju"
+                v-model="form.jenispakaian"
+                label="Jenis pakaian"
                 lazy-rules
-                :rules="[ val => val && val.length > 0 || 'Masukkan Nama Baju']"
+                :rules="[ val => val && val.length > 0 || 'Masukkan Jenis Pakaian']"
             />
 
              <q-input
@@ -40,18 +40,18 @@
 
             <q-input
               filled
-              v-model="form.warna"
-              :options="optionWarna"
-              label="Pilih Warna Baju"
-              :rules="[ val => val && val.length > 0 || 'Pilihlah Warna Baju']"
+              v-model="form.berat"
+              :options="optionberat"
+              label="Cantumkan Berat Pakaian"
+              :rules="[ val => val && val.length > 0 || 'Cantumkan Berat Pakaian']"
             />
 
             <q-select
               filled
-              v-model="form.ukuran"
-              :options="optionUkuran"
-              label="Pilih Ukuran Baju"
-              :rules="[ val => val && val.length > 0 || 'Pilihlah Ukuran Baju']"
+              v-model="form.pilihanlaundry"
+              :options="optionpilihanlaundry"
+              label="Pilih Cuci atau Setrika"
+              :rules="[ val => val && val.length > 0 || 'Pilihlah Cuci atau Setrika']"
             />
 
             <div class="flex">
@@ -95,28 +95,24 @@ export default {
   data () {
     return {
       form: {
-        namaBaju: null,
+        Jenispakaian: null,
         harga: 0,
-        warna: null,
-        ukuran: null,
+        berat: null,
+        pilihanlaundry: null,
         rating: 0,
         deskripsi: null
       },
-      optionWarna: [
-        'merah',
-        'biru',
-        'hijau',
-        'coklat',
-        'kuning',
-        'putih'
+      optionberat: [
+        '1kg',
+        '2kg',
+        '3kg',
+        '4kg',
+        '5kg',
+        '6kg'
       ],
       optionUkuran: [
-        'xs',
-        's',
-        'm',
-        'l',
-        'xl',
-        'xxl'
+        'cuci',
+        'setrika'
       ],
       image: null
     }
@@ -126,12 +122,12 @@ export default {
   },
   methods: {
     getData () {
-      this.$axios.get(`baju/getbyid/${this.$route.params.id}`)
+      this.$axios.get(`laundry/getbyid/${this.$route.params.id}`)
         .then(res => {
           if (res.data.sukses) {
             this.form = res.data.data
           } else {
-            this.$router.push({ name: 'dataBaju' })
+            this.$router.push({ name: 'datalaundry' })
           }
         })
     },
@@ -139,11 +135,11 @@ export default {
       const formData = new FormData()
       formData.append('image', this.image)
       formData.append('data', JSON.stringify(this.form))
-      this.$axios.put(`baju/edit/${this.$route.params.id}`, formData)
+      this.$axios.put(`laundry/edit/${this.$route.params.id}`, formData)
         .then(res => {
           if (res.data.sukses) {
             this.$showNotif(res.data.pesan, 'positive')
-            this.$router.push({ name: 'dataBaju' })
+            this.$router.push({ name: 'datalaundry' })
           } else {
             this.$showNotif(res.data.pesan, 'negative')
           }
